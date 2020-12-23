@@ -51,7 +51,7 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background(0);
+  background("lightblue");
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
 
@@ -60,7 +60,6 @@ function draw() {
   }
  
   keyPressed();
-  left();
   drawSprites();
   box1.display();
   box2.display();
@@ -72,19 +71,25 @@ text(mouseX+","+mouseY,200,200)
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
     // Look at the hints in the document and understand how to make the package body fall only on press of the Down arrow key.
-	 
+	
 	Matter.Body.setStatic(packageBody,false)
     
-  }
+}
+  if(keyCode === LEFT_ARROW){
+	helicopterSprite.x= helicopterSprite.x-10;
+	translation={x:-10.1,y:0}
+	
+	Matter.Body.translate(packageBody,translation)
+	
+}
+if(keyCode === RIGHT_ARROW){
+	helicopterSprite.x= helicopterSprite.x+10;
+	translation={x:+10.1,y:0}
+	
+	Matter.Body.translate(packageBody,translation)
+	
+}
 }
 
-function left(){
-	if(keyCode === LEFT_ARROW){
-		helicopterSprite.x= helicopterSprite.x-10;
-		translation={x:-10.1,y:0}
-		
-		Matter.Body.translate(packageBody,translation)
-		
-	}
-}
+
 
