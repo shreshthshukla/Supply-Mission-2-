@@ -55,8 +55,12 @@ function draw() {
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
 
-  
+  if(helicopterSprite.x<0){
+	text("You Faild",400,300)
+  }
+ 
   keyPressed();
+  left();
   drawSprites();
   box1.display();
   box2.display();
@@ -74,5 +78,13 @@ function keyPressed() {
   }
 }
 
-
+function left(){
+	if(keyCode === LEFT_ARROW){
+		helicopterSprite.x= helicopterSprite.x-10;
+		translation={x:-10.1,y:0}
+		
+		Matter.Body.translate(packageBody,translation)
+		
+	}
+}
 
